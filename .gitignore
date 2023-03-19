@@ -1,2 +1,41 @@
-/obj
-/main
+# autoconf
+autom4te.cache
+/autoscan.log
+/autoscan-*.log
+/aclocal.m4
+/compile
+/config.cache
+/config.guess
+/config.h.in
+/config.log
+/config.status
+/config.sub
+/configure
+/configure~
+/configure.scan
+/depcomp
+/install-sh
+/missing
+/stamp-h1
+
+# automake
+Makefile.in
+/ar-lib
+/mdate-sh
+/py-compile
+/test-driver
+/ylwrap
+.deps/
+.dirstamp
+
+# make
+Makefile
+build
+
+# testing
+/uploads
+/.vscode
+Symbols
+Symbol outline not available for this file
+To inspect a symbol, try clicking on the symbol directly in the code view.
+Code navigation supports a limited number of languages. See which languages are supported.

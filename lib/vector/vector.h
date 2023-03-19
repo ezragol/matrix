@@ -1,3 +1,6 @@
+#ifndef _VECTOR_VECTOR_H_
+#define _VECTOR_VECTOR_H_
+
 #include <math.h>
 
 #include "debug.h"
@@ -17,3 +20,8 @@ double vector2di_magnitude(vector2di vector);
 
 int vector2dd_is_nonzero(vector2dd vector);
 int vector2di_is_nonzero(vector2di vector);
+
+int vectors2dd_are_equal(vector2dd first, vector2dd second);
+int vectors2di_are_equal(vector2di first, vector2di second);
+
+#endif
