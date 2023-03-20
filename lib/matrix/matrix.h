@@ -1,6 +1,10 @@
 #ifndef _MATRIX_MATRIX_H_
 #define _MATRIX_MATRIX_H_
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,7 +12,8 @@
 
 #include "debug.h"
 
-typedef struct matrix {
+typedef struct matrix
+{
     int rows;
     int cols;
     double values[];

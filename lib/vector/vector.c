@@ -90,21 +90,24 @@ double vector3d_dot_product(vector3d_s first, vector3d_s second)
 }
 
 // returns the cross product of two 3d vectors
-void vector3d_cross_product(vector3d_s *vector, vector3d_s first, vector3d_s second)
+void vector3d_cross_product(vector3d_s first, vector3d_s second, vector3d_s *dest)
 {
     matrix_s *cross_prod_matrix = create_matrix(3, 3);
     double vec_value_array[6] = {first.x, first.y, first.z, second.x, second.y, second.z};
+    int index = 0;
     fill_matrix(cross_prod_matrix, 1);
 
     for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            set_matrix_value(cross_prod_matrix, i + 1, j, vec_value_array[i + j]);
+            set_matrix_value(cross_prod_matrix, i + 1, j, vec_value_array[index]);
+            index++;
         }
     }
 
-    matrix_cofactor(cross_prod_matrix, 0, 0, &vector->x);
-    matrix_cofactor(cross_prod_matrix, 0, 1, &vector->y);
-    matrix_cofactor(cross_prod_matrix, 0, 2, &vector->z);
+    matrix_cofactor(cross_prod_matrix, 0, 0, &dest->x);
+    matrix_cofactor(cross_prod_matrix, 0, 1, &dest->y);
+    matrix_cofactor(cross_prod_matrix, 0, 2, &dest->z);
+    delete_matrix(cross_prod_matrix);
 }

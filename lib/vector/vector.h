@@ -41,6 +41,7 @@ int vectors3d_are_equal(vector3d_s first, vector3d_s second);
 double vector2dd_direction(vector2dd_s vector, int degree_mode);
 double vector2di_direction(vector2di_s vector, int degree_mode);
 
-void vector3d_cross_product(vector3d_s *vector, vector3d_s first, vector3d_s second);
+double vector3d_dot_product(vector3d_s first, vector3d_s second);
+void vector3d_cross_product(vector3d_s first, vector3d_s second, vector3d_s *dest);
 
 #endif

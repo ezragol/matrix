@@ -132,6 +132,7 @@ int matrix_cofactor(matrix_s *matrix, int row, int col, double *dest)
     double minor_determinant;
     int minor_status = get_matrix_minor(matrix, row, col, minor);
     int determinant_status = matrix_determinant(minor, &minor_determinant);
+    // debug("%f", minor_determinant);
 
     if (determinant_status != 0 || minor_status != 0)
         return _ERR_NOT_SQUARE;
@@ -154,7 +155,10 @@ int matrix_determinant(matrix_s *matrix, double *dest)
     // determinant of 1x1 matrix is just the value inside row 1 col 1
     // assign to double pointer (dest)
     if (rows == 1)
+    {
         get_matrix_value(matrix, 0, 0, dest);
+        return 0;
+    }
 
     for (int i = 0; i < rows; i++)
     {
