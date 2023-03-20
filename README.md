@@ -9,3 +9,5 @@ abilities:
 - add matrices
 - multiply matrices
 - scalar multiply matrices
+- find the cross product of two 3d vectors
+- find the dot product of two 3d vectors
