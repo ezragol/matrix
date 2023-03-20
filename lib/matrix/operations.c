@@ -21,8 +21,8 @@ int scalar_multiply_matrix(matrix_s *matrix, double scalar)
 // assignment happens inside if statement - probably not great
 int add_matrices(matrix_s *first, matrix_s *second)
 {
-    vector2di first_dimensions = {first->rows, first->cols};
-    vector2di second_dimensions = {second->rows, second->cols};
+    vector2di_s first_dimensions = {first->rows, first->cols};
+    vector2di_s second_dimensions = {second->rows, second->cols};
 
     if (!vectors2di_are_equal(first_dimensions, second_dimensions))
         return 1;
@@ -44,7 +44,7 @@ int add_matrices(matrix_s *first, matrix_s *second)
 matrix_s *multiply_matrices(matrix_s *first, matrix_s *second)
 {
     if (!have_compatible_dimensions(first, second))
-        return 1;
+        fail(1, "cannot multiply incompatible matrices");
 
     int first_rows = first->rows, first_cols = first->cols;
     double(*first_values)[first->cols] = (double(*)[first->cols])first->values;
@@ -59,8 +59,7 @@ matrix_s *multiply_matrices(matrix_s *first, matrix_s *second)
             for (int t = 0; t < first_cols; t++)
             {
                 double second_value;
-                if (get_matrix_value(second, t, j, &second_value))
-                    return 1;
+                get_matrix_value(second, t, j, &second_value);
                 sum += first_values[i][t] * second_value;
             }
             set_matrix_value(new_matrix, i, j, sum);
@@ -101,10 +100,10 @@ matrix_s *transpose_matrix(matrix_s *matrix)
      09 11 12
      13 15 16 ]
 */
-matrix_s *get_matrix_minor_v(matrix_s *matrix, vector2di exclude_basis)
+matrix_s *get_matrix_minor_v(matrix_s *matrix, vector2di_s exclude_basis)
 {
     if (!is_square(matrix))
-        return 1;
+        fail(1, "cannot get minor of a non-square matrix");
 
     int rows = matrix->rows;
     int minorI = 0;
@@ -135,7 +134,7 @@ matrix_s *get_matrix_minor_v(matrix_s *matrix, vector2di exclude_basis)
 // see "get_matrix_minor_v"
 matrix_s *get_matrix_minor(matrix_s *matrix, int row, int col)
 {
-    vector2di point = {row, col};
+    vector2di_s point = {row, col};
     return get_matrix_minor_v(matrix, point);
 }
 

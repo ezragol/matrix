@@ -6,16 +6,7 @@
 
 int main()
 {
-    matrix_s *matrix = create_matrix(4, 4);
-    double determinant;
-    fill_matrix(matrix, 3.0);
-    set_matrix_value(matrix, 0, 0, 1.0);
-    set_matrix_value(matrix, 0, 2, 4.0);
-    set_matrix_value(matrix, 1, 1, 2.0);
-    set_matrix_value(matrix, 3, 3, 1.0);
-    print_matrix(matrix, 1);
-    matrix_determinant(matrix, &determinant);
-    debug("detA = %.2f", determinant);
-    delete_matrix(matrix);
+    vector2di_s vec = {2, 2};
+    debug("%.0f", vector2di_direction(vec, DEGREES));
     return 0;
 }

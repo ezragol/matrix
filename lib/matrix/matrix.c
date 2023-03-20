@@ -10,15 +10,15 @@ matrix_s *create_matrix(int rows, int cols)
 }
 
 // check if a given position is within the range of a matrix
-int within_matrix_bounds_v(matrix_s *matrix, vector2di point)
+int within_matrix_bounds_v(matrix_s *matrix, vector2di_s point)
 {
-    return point.x < matrix->cols && point.y < matrix->rows && vector2di_is_nonzero(point);
+    return point.x < matrix->cols && point.y < matrix->rows && vector2di_is_positive(point);
 }
 
 // see "set_matrix_value_v"
 int within_matrix_bounds(matrix_s *matrix, int row, int col)
 {
-    vector2di point = {row, col};
+    vector2di_s point = {row, col};
     return within_matrix_bounds_v(matrix, point);
 }
 
@@ -49,7 +49,7 @@ int have_compatible_dimensions(matrix_s *first, matrix_s *second)
 }
 
 // set the matrix value at the given position
-int set_matrix_value_v(matrix_s *matrix, vector2di point, double value)
+int set_matrix_value_v(matrix_s *matrix, vector2di_s point, double value)
 {
     double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
     if (!within_matrix_bounds_v(matrix, point))
@@ -61,12 +61,12 @@ int set_matrix_value_v(matrix_s *matrix, vector2di point, double value)
 // see "set_matrix_value_v"
 int set_matrix_value(matrix_s *matrix, int row, int col, double value)
 {
-    vector2di point = {row, col};
+    vector2di_s point = {row, col};
     return set_matrix_value_v(matrix, point, value);
 }
 
 // get a matrix value at the given position
-int get_matrix_value_v(matrix_s *matrix, vector2di point, double *value)
+int get_matrix_value_v(matrix_s *matrix, vector2di_s point, double *value)
 {
     double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
     if (!within_matrix_bounds_v(matrix, point))
@@ -78,7 +78,7 @@ int get_matrix_value_v(matrix_s *matrix, vector2di point, double *value)
 // see "get_matrix_value_v"
 int get_matrix_value(matrix_s *matrix, int row, int col, double *value)
 {
-    vector2di point = {row, col};
+    vector2di_s point = {row, col};
     return get_matrix_value_v(matrix, point, value);
 }
 

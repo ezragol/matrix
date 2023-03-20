@@ -4,14 +4,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define debug(...)                 \
-    fprintf(stderr, "[[debug]] "); \
-    fprintf(stderr, __VA_ARGS__);  \
-    fprintf(stderr, "\n")
-    
-#define fail(code, ...)            \
-    fprintf(stderr, "[[fatal]] "); \
-    fprintf(stderr, __VA_ARGS__);  \
-    exit(code)
+// wrap in do-while-loop so it works inside unbracketed loops and only runs once
+#define debug(...)                     \
+    do                                 \
+    {                                  \
+        fprintf(stderr, "[[debug]] "); \
+        fprintf(stderr, __VA_ARGS__);  \
+        fprintf(stderr, "\n");         \
+    } while (0);
+
+#define fail(code, ...)                \
+    do                                 \
+    {                                  \
+        fprintf(stderr, "[[fatal]] "); \
+        fprintf(stderr, __VA_ARGS__);  \
+        exit(code);                    \
+    } while (0);
 
 #endif
