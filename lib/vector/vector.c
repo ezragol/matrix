@@ -10,7 +10,7 @@ double vector2dd_magnitude(vector2dd_s vector)
 // see "vector2dd_magnitude"
 double vector2di_magnitude(vector2di_s vector)
 {
-    vector2dd_s cast = { vector.x, vector.y };
+    vector2dd_s cast = {vector.x, vector.y};
     return vector2dd_magnitude(cast);
 }
 
@@ -79,6 +79,32 @@ double vector2dd_direction(vector2dd_s vector, int degree_mode)
 // see "vector2dd_direction"
 double vector2di_direction(vector2di_s vector, int degree_mode)
 {
-    vector2dd_s cast = { vector.x, vector.y };
+    vector2dd_s cast = {vector.x, vector.y};
     return vector2dd_direction(cast, degree_mode);
+}
+
+// find the dot product of two 3d vectors
+double vector3d_dot_product(vector3d_s first, vector3d_s second)
+{
+    return first.x * second.x + first.y * second.y + first.z * second.z;
+}
+
+// returns the cross product of two 3d vectors
+void vector3d_cross_product(vector3d_s *vector, vector3d_s first, vector3d_s second)
+{
+    matrix_s *cross_prod_matrix = create_matrix(3, 3);
+    double vec_value_array[6] = {first.x, first.y, first.z, second.x, second.y, second.z};
+    fill_matrix(cross_prod_matrix, 1);
+
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            set_matrix_value(cross_prod_matrix, i + 1, j, vec_value_array[i + j]);
+        }
+    }
+
+    matrix_cofactor(cross_prod_matrix, 0, 0, &vector->x);
+    matrix_cofactor(cross_prod_matrix, 0, 1, &vector->y);
+    matrix_cofactor(cross_prod_matrix, 0, 2, &vector->z);
 }

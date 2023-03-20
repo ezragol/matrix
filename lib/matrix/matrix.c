@@ -10,30 +10,21 @@ matrix_s *create_matrix(int rows, int cols)
 }
 
 // check if a given position is within the range of a matrix
-int within_matrix_bounds_v(matrix_s *matrix, vector2di_s point)
-{
-    return point.x < matrix->cols && point.y < matrix->rows && vector2di_is_positive(point);
-}
-
-// see "set_matrix_value_v"
 int within_matrix_bounds(matrix_s *matrix, int row, int col)
 {
-    vector2di_s point = {row, col};
-    return within_matrix_bounds_v(matrix, point);
+    return row < matrix->rows && col < matrix->cols && row >= 0 && col >= 0;
 }
 
 // fill a matrix with the given value
-int fill_matrix(matrix_s *matrix, double value)
+void fill_matrix(matrix_s *matrix, double value)
 {
     for (int i = 0; i < matrix->rows; i++)
     {
         for (int j = 0; j < matrix->cols; j++)
         {
-            if (set_matrix_value(matrix, i, j, value))
-                return 1;
+            set_matrix_value(matrix, i, j, value);
         }
     }
-    return 0;
 }
 
 // make sure matrix is AxA
@@ -49,37 +40,22 @@ int have_compatible_dimensions(matrix_s *first, matrix_s *second)
 }
 
 // set the matrix value at the given position
-int set_matrix_value_v(matrix_s *matrix, vector2di_s point, double value)
-{
-    double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
-    if (!within_matrix_bounds_v(matrix, point))
-        return 1;
-    values[point.x][point.y] = value;
-    return 0;
-}
-
-// see "set_matrix_value_v"
 int set_matrix_value(matrix_s *matrix, int row, int col, double value)
 {
-    vector2di_s point = {row, col};
-    return set_matrix_value_v(matrix, point, value);
+    double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
+    if (!within_matrix_bounds(matrix, row, col))
+        return 1;
+    values[row][col] = value;
 }
 
 // get a matrix value at the given position
-int get_matrix_value_v(matrix_s *matrix, vector2di_s point, double *value)
-{
-    double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
-    if (!within_matrix_bounds_v(matrix, point))
-        return 1;
-    *value = values[point.x][point.y];
-    return 0;
-}
-
-// see "get_matrix_value_v"
 int get_matrix_value(matrix_s *matrix, int row, int col, double *value)
 {
-    vector2di_s point = {row, col};
-    return get_matrix_value_v(matrix, point, value);
+    double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
+    if (!within_matrix_bounds(matrix, row, col))
+        return 1;
+    *value = values[row][col];
+    return 0;
 }
 
 // free matrix
