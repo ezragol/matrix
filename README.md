@@ -24,3 +24,4 @@ lacks:
 
 future:
 - probably convert to rust library
+- or javascript library
