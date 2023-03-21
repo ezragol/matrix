@@ -1,13 +1,26 @@
 # Matrix Calculator
 work in progress matrix/vector calculator
 
-abilities:
-- determinants of any size matrix
-- transposing matrices
-- get minor subsets of matrices
-- get vector magnitudes
+matrices:
+- determinant of a matrix
+- matrix transposing
+- minors/cofactors of a matrix
 - add matrices
 - multiply matrices
 - scalar multiply matrices
+
+vectors:
+- get vector magnitudes
 - find the cross product of two 3d vectors
 - find the dot product of two 3d vectors
+- find the unit vector of a 2d/3d vector
+
+lacks:
+- better error handling
+- need to figure out of returning vectors is good/bad
+- figure out how to package as a library
+- alpha/beta/gamma angles for 3d vectors
+- rref/trace/powers [-, +] for matrices (inverses)
+
+future:
+- probably convert to rust library

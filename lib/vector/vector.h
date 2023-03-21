@@ -7,41 +7,42 @@
 #define RADIANS 0
 #define DEGREES 1
 
-typedef struct vector2dd {
+typedef struct vector2d {
     double x;
     double y;
-} vector2dd_s;
-
-typedef struct vector2di {
-    int x;
-    int y;
-} vector2di_s;
+} vector2d;
 
 typedef struct vector3d {
     double x;
     double y;
     double z;
-} vector3d_s;
+} vector3d;
 
-double vector2dd_magnitude(vector2dd_s vector);
-double vector2di_magnitude(vector2di_s vector);
+double vector2d_magnitude(vector2d vector);
+double vector3d_magnitude(vector3d vector);
 
-double vector3d_magnitude(vector3d_s vector);
+int vector2dd_is_positive(vector2d vector);
+int vector3d_is_positive(vector3d vector);
 
-int vector2dd_is_positive(vector2dd_s vector);
-int vector2di_is_positive(vector2di_s vector);
+int vectors2dd_are_equal(vector2d first, vector2d second);
+int vectors3d_are_equal(vector3d first, vector3d second);
 
-int vector3d_is_positive(vector3d_s vector);
+void print_vector2dd(vector2d vector, int precision);
+void print_vector3d(vector3d vector, int precision);
 
-int vectors2dd_are_equal(vector2dd_s first, vector2dd_s second);
-int vectors2di_are_equal(vector2di_s first, vector2di_s second);
+//-------------------------//
 
-int vectors3d_are_equal(vector3d_s first, vector3d_s second);
+vector2d unit_vector2dd(vector2d vector);
+vector3d unit_vector3d(vector3d vector);
 
-double vector2dd_direction(vector2dd_s vector, int degree_mode);
-double vector2di_direction(vector2di_s vector, int degree_mode);
+double vector2dd_direction(vector2d vector, int degree_mode);
 
-double vector3d_dot_product(vector3d_s first, vector3d_s second);
-void vector3d_cross_product(vector3d_s first, vector3d_s second, vector3d_s *dest);
+double vector3d_dot_product(vector3d first, vector3d second);
+vector3d vector3d_cross_product(vector3d first, vector3d second);
+
+// TODO (up next)
+// double vector3d_alpha_angle(vector3d vector);
+// double vector3d_beta_angle(vector3d vector);
+// double vector3d_gamma_angle(vector3d vector);
 
 #endif

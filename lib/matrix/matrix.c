@@ -1,22 +1,22 @@
 #include "matrix.h"
 
 // create an AxB matrix
-matrix_s *create_matrix(int rows, int cols)
+matrix *create_matrix(int rows, int cols)
 {
-    matrix_s *matrix = calloc(1, sizeof *matrix + sizeof(double[rows][cols]));
+    matrix *matrix = calloc(1, sizeof *matrix + sizeof(double[rows][cols]));
     matrix->rows = rows;
     matrix->cols = cols;
     return matrix;
 }
 
 // check if a given position is within the range of a matrix
-int within_matrix_bounds(matrix_s *matrix, int row, int col)
+int within_matrix_bounds(matrix *matrix, int row, int col)
 {
     return row < matrix->rows && col < matrix->cols && row >= 0 && col >= 0;
 }
 
 // fill a matrix with the given value
-void fill_matrix(matrix_s *matrix, double value)
+void fill_matrix(matrix *matrix, double value)
 {
     for (int i = 0; i < matrix->rows; i++)
     {
@@ -28,19 +28,19 @@ void fill_matrix(matrix_s *matrix, double value)
 }
 
 // make sure matrix is AxA
-int is_square(matrix_s *matrix)
+int is_square(matrix *matrix)
 {
     return matrix->cols == matrix->rows;
 }
 
 // make sure that the first matrix is BxA and second is AxC
-int have_compatible_dimensions(matrix_s *first, matrix_s *second)
+int have_compatible_dimensions(matrix *first, matrix *second)
 {
     return first->cols == second->rows;
 }
 
 // set the matrix value at the given position
-int set_matrix_value(matrix_s *matrix, int row, int col, double value)
+int set_matrix_value(matrix *matrix, int row, int col, double value)
 {
     double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
     if (!within_matrix_bounds(matrix, row, col))
@@ -49,7 +49,7 @@ int set_matrix_value(matrix_s *matrix, int row, int col, double value)
 }
 
 // get a matrix value at the given position
-int get_matrix_value(matrix_s *matrix, int row, int col, double *value)
+int get_matrix_value(matrix *matrix, int row, int col, double *value)
 {
     double(*values)[matrix->cols] = (double(*)[matrix->cols])matrix->values;
     if (!within_matrix_bounds(matrix, row, col))
@@ -59,16 +59,16 @@ int get_matrix_value(matrix_s *matrix, int row, int col, double *value)
 }
 
 // free matrix
-void delete_matrix(matrix_s *matrix)
+void delete_matrix(matrix *matrix)
 {
     free(matrix);
 }
 
 // print all values in the matrix
-void print_matrix(matrix_s *matrix, int precision)
+void print_matrix(matrix *matrix, int precision)
 {
     printf("[");
-    char print_organizer[10];
+    char print_organizer[8];
     sprintf(print_organizer, " %%.%df ", precision);
     for (int i = 0; i < matrix->rows; i++)
     {

@@ -17,21 +17,21 @@ typedef struct matrix
     int rows;
     int cols;
     double values[];
-} matrix_s;
+} matrix;
 
-matrix_s *create_matrix(int rows, int cols);
+matrix *create_matrix(int rows, int cols);
 
-int within_matrix_bounds(matrix_s *matrix, int row, int col);
-void fill_matrix(matrix_s *matrix, double value);
+int within_matrix_bounds(matrix *matrix, int row, int col);
+void fill_matrix(matrix *matrix, double value);
 
-int is_square(matrix_s *matrix);
-int have_compatible_dimensions(matrix_s *first, matrix_s *second);
+int is_square(matrix *matrix);
+int have_compatible_dimensions(matrix *first, matrix *second);
 
-int set_matrix_value(matrix_s *matrix, int row, int col, double value);
+int set_matrix_value(matrix *matrix, int row, int col, double value);
 
-int get_matrix_value(matrix_s *matrix, int row, int col, double *value);
+int get_matrix_value(matrix *matrix, int row, int col, double *value);
 
-void delete_matrix(matrix_s *matrix);
-void print_matrix(matrix_s *matrix, int precision);
+void delete_matrix(matrix *matrix);
+void print_matrix(matrix *matrix, int precision);
 
 #endif
