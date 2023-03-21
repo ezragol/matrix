@@ -1,10 +1,11 @@
 #include <stdio.h>
 
 #include "debug.h"
-#include "vector/vector.h"
+#include "vector.h"
 
 int main()
 {
-    // test
+    vector3d vec = {0,0,-1};
+    debug("%f", vector3d_gamma(vec, DEGREES));
     return 0;
 }

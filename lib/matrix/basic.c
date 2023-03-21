@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "basic.h"
 
 // create an AxB matrix
 matrix *create_matrix(int rows, int cols)

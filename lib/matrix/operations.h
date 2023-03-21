@@ -2,7 +2,7 @@
 #define _MATRIX_OPERATIONS_H_
 
 #include "debug.h"
-#include "matrix.h"
+#include "basic.h"
 
 #define _ERR_NOT_SQUARE 10
 #define _ERR_DIMENSIONS_COMPAT 11

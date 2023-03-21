@@ -14,12 +14,12 @@ vectors:
 - find the cross product of two 3d vectors
 - find the dot product of two 3d vectors
 - find the unit vector of a 2d/3d vector
+- alpha/beta/gamma angles for 3d vectors
 
 lacks:
 - better error handling
 - need to figure out of returning vectors is good/bad
 - figure out how to package as a library
-- alpha/beta/gamma angles for 3d vectors
 - rref/trace/powers [-, +] for matrices (inverses)
 
 future:
