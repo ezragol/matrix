@@ -15,6 +15,7 @@ vectors:
 - find the dot product of two 3d vectors
 - find the unit vector of a 2d/3d vector
 - alpha/beta/gamma angles for 3d vectors
+- find angle between two 3d vectors
 
 lacks:
 - better error handling

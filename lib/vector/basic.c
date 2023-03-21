@@ -86,9 +86,9 @@ vector2d unit_vector2d(vector2d vector)
 {
     vector2d unit_v = vector;
     double magnitude = vector2d_magnitude(vector);
-    // magnitude == 0 -> can't divide by zero
-    if (!magnitude)
-        fail(1, "can't file unit vector of the zero vector");
+    // can't divide by zero
+    if (magnitude == 0)
+        fail(1, "can't find unit vector of the zero vector");
 
     unit_v.x /= magnitude;
     unit_v.y /= magnitude;

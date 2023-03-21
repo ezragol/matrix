@@ -31,3 +31,16 @@ vector3d vector3d_cross_product(vector3d first, vector3d second)
     delete_matrix(cross_prod_matrix);
     return return_vec;
 }
+
+// find the angle between two 3d vectors
+// always between [0,180]
+double angle_between_vectors3d(vector3d first, vector3d second, int degree_mode)
+{
+    double magnitude_product = vector3d_magnitude(first) * vector3d_magnitude(second);
+    double dot_product = vector3d_dot_product(first, second);
+    double rads = acos(dot_product / magnitude_product);
+    
+    if (dot_product == 0)
+        rads = M_PI / 2;
+    return convert_trig_mode(rads, degree_mode);
+}

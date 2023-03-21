@@ -5,7 +5,8 @@
 
 int main()
 {
-    vector3d vec = {0,0,-1};
-    debug("%f", vector3d_gamma(vec, DEGREES));
+    vector3d first = {0,0,1};
+    vector3d second = {1,1,0};
+    debug("%f", angle_between_vectors3d(first, second, DEGREES));
     return 0;
 }
