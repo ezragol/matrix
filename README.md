@@ -11,6 +11,7 @@ matrices:
 
 vectors:
 - get vector magnitudes
+- scalar multiply vectors
 - find the cross product of two 3d vectors
 - find the dot product of two 3d vectors
 - find the unit vector of a 2d/3d vector
