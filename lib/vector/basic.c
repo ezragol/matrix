@@ -1,5 +1,6 @@
 #include "basic.h"
 
+// convert between radians and degrees
 double convert_trig_mode(double rads, int degree_mode)
 {
     // if mode == DEGREES (since degrees is defined as 1)
@@ -8,6 +9,7 @@ double convert_trig_mode(double rads, int degree_mode)
     return rads;
 }
 
+// converts the result of acos to the actual given range
 double convert_acos(double rads, double y_value, int degree_mode)
 {
     if (y_value < 0)
@@ -137,4 +139,18 @@ double vector3d_gamma(vector3d vector, int degree_mode)
     vector3d cosine_vec = unit_vector3d(vector);
     return convert_trig_mode(
         acos(cosine_vec.z), degree_mode);
+}
+
+// multiplies all elements in a given 2d vector by a scalar
+vector2d scalar_multiply_vector2d(vector2d vector, double scalar)
+{
+    vector2d multiplied = {vector.x * scalar, vector.y * scalar};
+    return multiplied;
+}
+
+// multiplies all elements in a given 3d vector by a scalar
+vector3d scalar_multiply_vector3d(vector3d vector, double scalar)
+{
+    vector3d multiplied = {vector.x * scalar, vector.y * scalar, vector.z * scalar};
+    return multiplied;
 }

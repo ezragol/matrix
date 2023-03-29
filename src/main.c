@@ -5,8 +5,9 @@
 
 int main()
 {
-    vector3d first = {0,0,1};
-    vector3d second = {1,1,0};
-    debug("%f", angle_between_vectors3d(first, second, DEGREES));
+    vector3d first = {-2, -2, 1};
+    vector3d second = {1, 1, 0};
+    print_vector3d(
+        vector3d_projection(first, second), 1);
     return 0;
 }

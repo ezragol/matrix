@@ -44,3 +44,17 @@ double angle_between_vectors3d(vector3d first, vector3d second, int degree_mode)
         rads = M_PI / 2;
     return convert_trig_mode(rads, degree_mode);
 }
+
+// calculate the magnitude of a projection of one vector onto another
+double scalar_projection_vector3d(vector3d vector, vector3d onto)
+{
+    return vector3d_dot_product(vector, onto) / vector3d_magnitude(onto);
+}
+
+// returns the projected vector
+vector3d vector3d_projection(vector3d vector, vector3d onto)
+{
+    return scalar_multiply_vector3d(
+        unit_vector3d(onto),
+        scalar_projection_vector3d(vector, onto));
+}

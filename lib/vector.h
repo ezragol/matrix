@@ -3,5 +3,6 @@
 
 // export all vector headers
 #include "vector/operations.h"
+#include "vector/plane.h"
 
 #endif

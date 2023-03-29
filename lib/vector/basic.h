@@ -42,4 +42,7 @@ double vector3d_alpha(vector3d vector, int degree_mode);
 double vector3d_beta(vector3d vector, int degree_mode);
 double vector3d_gamma(vector3d vector, int degree_mode);
 
+vector2d scalar_multiply_vector2d(vector2d vector, double scalar);
+vector3d scalar_multiply_vector3d(vector3d vector, double scalar);
+
 #endif
