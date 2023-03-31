@@ -3,6 +3,9 @@
 
 #include "operations.h"
 
+// planes in R3 are defined as
+// Ax + By + Cz = D
+// all coefficients are stored in the struct as a,b,c,d
 typedef struct plane3d {
   double a;
   double b;

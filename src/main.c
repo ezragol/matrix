@@ -5,9 +5,8 @@
 
 int main()
 {
-    vector3d first = {-2, -2, 1};
-    vector3d second = {1, 1, 0};
-    print_vector3d(
-        vector3d_projection(first, second), 1);
-    return 0;
+    vector3d point = {2, -1, 7};
+    plane3d plane = {4, -8, 1, 5};
+    debug("%.0f",
+          distance_from_plane3d(point, plane));
 }
